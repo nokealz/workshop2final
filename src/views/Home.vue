@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     info (v) {
-      window.location.href = `http://192.168.31.246:8080/about?first_name=${v.first_name}`
+      window.location.href = `http://192.168.100.3:8080/about?first_name=${v.first_name}`
       console.log(v)
     }
   }

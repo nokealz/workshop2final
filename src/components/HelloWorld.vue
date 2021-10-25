@@ -6,8 +6,8 @@
       class="mb-2"
     >
       <b-card-text>
-        {{salary}} + {{hour}} = {{sum}} <br>
-        {{salary + hour}} - {{bonus}} = {{salary + hour - bonus}}
+        {{salary}} + {{hour}} = {{ parseInt(salary) + parseInt(hour)}} <br>
+        {{salary + hour}} - {{bonus}} = {{ parseInt(salary) + parseInt(hour) - parseInt(bonus)}}
       </b-card-text>
     </b-card>
   </div>
@@ -16,8 +16,6 @@
 <script>
 export default {
   mounted () {
-    // eslint-disable-next-line no-undef
-    this.sum = sum(this.salary, this.hour)
   },
   name: 'HelloWorld',
   props: {
@@ -26,17 +24,9 @@ export default {
     bonus: Number
   },
   methods: {
-    sum (salary, hour) {
-      // eslint-disable-next-line no-undef
-      sum = salary + hour
-      // eslint-disable-next-line no-undef
-      return sum
-    }
   },
   data () {
     return {
-      // eslint-disable-next-line vue/no-dupe-keys
-      sum: 0
     }
   }
 }

@@ -6,7 +6,7 @@
       class="mb-2"
     >
       <b-card-text class="text-right">
-        {{salary + hour - bonus}}
+        {{parseInt(salary) + parseInt(hour) - parseInt(bonus)}}
       </b-card-text>
     </b-card>
   </div>
