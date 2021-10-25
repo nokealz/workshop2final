@@ -15,7 +15,7 @@
         </b-col>
         <b-col>
           <p class="text-left my-2">จำนวนชั่วโมงที่ทำงาน</p>
-          <b-form-input type="number" v-model="hour" placeholder="จำนวนชั่วโมงที่ทำงาน" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
+          <b-form-input type="number" @change="summm" v-model="hour" placeholder="ใส่จำนวนชั่วโมงที่ทำงาน" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
         </b-col>
         <b-col>
           <p class="text-left my-2">โบนัส</p>
@@ -24,18 +24,20 @@
         <b-col>
 .
         </b-col>
-        <b-col cols="6" :class="cal">
+        <b-col cols="6" >
           <HelloWorld
             :salary="calculator[0].salary"
             :hour="hour"
             :bonus="bonus"
+            :sum="sum"
           />
         </b-col>
-        <b-col cols="6" :class="cal">
+        <b-col cols="6" >
           <Chart
             :salary="calculator[0].salary"
             :hour="hour"
             :bonus="bonus"
+            :sum="sum"
           />
         </b-col>
       </b-row>
@@ -66,18 +68,32 @@ export default {
   },
   data () {
     return {
+      cal: 'hidden',
+      pa: '',
       hour: 0,
       bonus: 0,
+      sum: 0,
       calculator: [],
       items: [
-        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', salary: 123 },
-        { age: 21, first_name: 'Larsen', last_name: 'Shaw', salary: 123 },
-        { age: 89, first_name: 'Geneva', last_name: 'Wilson', salary: 123 },
-        { age: 38, first_name: 'Jami', last_name: 'Carney', salary: 123 }
+        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', salary: 45 },
+        { age: 21, first_name: 'Larsen', last_name: 'Shaw', salary: 40 },
+        { age: 89, first_name: 'Geneva', last_name: 'Wilson', salary: 50 },
+        { age: 38, first_name: 'Jami', last_name: 'Carney', salary: 48 }
       ]
     }
   },
   methods: {
+    // callcal () {
+    //   this.cal = ''
+    //   this.pa = ''
+    // },
+    // why () {
+    //   this.hee = 0
+    //   this.text = 0
+    //   this.num = 0
+    //   this.cal = 'hidden'
+    //   this.pa = 'hidden'
+    // }
   }
 }
 </script>

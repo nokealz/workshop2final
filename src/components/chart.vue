@@ -1,12 +1,12 @@
 <template>
   <div>
     <b-card
-      title="Total"
+      title="ยอดรวม"
       style="max-width: 100%;"
       class="mb-2"
     >
       <b-card-text class="text-right">
-        {{salary + hour - bonus}}
+        {{(parseInt(salary) * parseInt(hour)) + (parseInt(salary) * parseInt(hour)) * (parseInt(bonus)/100)}} บาท
       </b-card-text>
     </b-card>
   </div>
