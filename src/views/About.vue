@@ -15,15 +15,14 @@
         </b-col>
         <b-col>
           <p class="text-left my-2">จำนวนชั่วโมงที่ทำงาน</p>
-          <b-form-input type="number" v-model="hour" placeholder="ใส่จำนวนชั่วโมงที่ทำงาน" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
+          <b-form-input type="number" v-model="hour" placeholder="จำนวนชั่วโมงที่ทำงาน" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
         </b-col>
         <b-col>
           <p class="text-left my-2">โบนัส</p>
           <b-form-input type="number" v-model="bonus" placeholder="%โบนัสที่ได้" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
         </b-col>
         <b-col>
-          <b-button variant="dark" class="my-4" @click="callcal">calculator</b-button>
-          <b-button variant="dark" class="my-4 ml-2" @click="why">clear</b-button>
+.
         </b-col>
         <b-col cols="6" :class="cal">
           <HelloWorld
