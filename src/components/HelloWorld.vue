@@ -1,51 +1,46 @@
 <template>
-  <div class="hello">
-    <b-table striped hover :items="items" :fields="fields">
-      <template #cell(actions)="row">
-        <b-button @click="info(row.item)">
-          calculator
-        </b-button>
-      </template>
-    </b-table>
+  <div>
+    <b-card
+      title="method"
+      style="max-width: 100%;"
+      class="mb-2"
+    >
+      <b-card-text>
+        {{salary}} + {{hour}} = {{sum}} <br>
+        {{salary + hour}} - {{bonus}} = {{salary + hour - bonus}}
+      </b-card-text>
+    </b-card>
   </div>
 </template>
 
 <script>
-
 export default {
+  mounted () {
+    // eslint-disable-next-line no-undef
+    this.sum = sum(this.salary, this.hour)
+  },
   name: 'HelloWorld',
   props: {
-    msg: String
+    salary: Number,
+    hour: Number,
+    bonus: Number
+  },
+  methods: {
+    sum (salary, hour) {
+      // eslint-disable-next-line no-undef
+      sum = salary + hour
+      // eslint-disable-next-line no-undef
+      return sum
+    }
   },
   data () {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
-      fields: [
-        {
-          key: 'first_name'
-        },
-        {
-          key: 'last_name'
-        },
-        {
-          key: 'salary'
-        },
-        {
-          key: 'actions'
-        }
-      ],
-      items: [
-        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', salary: 123 },
-        { age: 21, first_name: 'Larsen', last_name: 'Shaw', salary: 123 },
-        { age: 89, first_name: 'Geneva', last_name: 'Wilson', salary: 123 },
-        { age: 38, first_name: 'Jami', last_name: 'Carney', salary: 123 }
-      ]
-    }
-  },
-  methods: {
-    info (v) {
-      console.log(v)
+      // eslint-disable-next-line vue/no-dupe-keys
+      sum: 0
     }
   }
 }
 </script>
+
+<style>
+</style>

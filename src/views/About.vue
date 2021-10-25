@@ -1,12 +1,59 @@
 <template>
   <div class="hello">
-    {{this.calculator}}
+    <b-container class="bv-example-row mb-3">
+      <b-row cols="1">
+        <b-col>
+           <b-card class="text-center">
+    <div class="bg-secondary text-light">
+    ชื่อจริง : {{calculator[0].first_name}}  {{calculator[0].last_name}}
+    </div>
+  </b-card>
+        </b-col>
+        <b-col>
+          <p class="text-left my-2">เงินที่ได้ต่อชั่วโมง</p>
+          <b-form-input type="number" v-model="calculator[0].salary" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
+        </b-col>
+        <b-col>
+          <p class="text-left my-2">จำนวนชั่วโมงที่ทำงาน</p>
+          <b-form-input type="number" v-model="hour" placeholder="ใส่จำนวนชั่วโมงที่ทำงาน" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
+        </b-col>
+        <b-col>
+          <p class="text-left my-2">โบนัส</p>
+          <b-form-input type="number" v-model="bonus" placeholder="%โบนัสที่ได้" oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[+,*,/]/g, '').replace(/(\..*?)\..*/g, '$1');"></b-form-input>
+        </b-col>
+        <b-col>
+          <b-button variant="dark" class="my-4" @click="callcal">calculator</b-button>
+          <b-button variant="dark" class="my-4 ml-2" @click="why">clear</b-button>
+        </b-col>
+        <b-col cols="6" :class="cal">
+          <HelloWorld
+            :salary="calculator[0].salary"
+            :hour="hour"
+            :bonus="bonus"
+          />
+        </b-col>
+        <b-col cols="6" :class="cal">
+          <Chart
+            :salary="calculator[0].salary"
+            :hour="hour"
+            :bonus="bonus"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 
+import HelloWorld from '@/components/HelloWorld.vue'
+import Chart from '@/components/chart.vue'
+
 export default {
+  components: {
+    HelloWorld,
+    Chart
+  },
   mounted () {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
@@ -20,6 +67,8 @@ export default {
   },
   data () {
     return {
+      hour: 0,
+      bonus: 0,
       calculator: [],
       items: [
         { age: 40, first_name: 'Dickerson', last_name: 'Macdonald', salary: 123 },
